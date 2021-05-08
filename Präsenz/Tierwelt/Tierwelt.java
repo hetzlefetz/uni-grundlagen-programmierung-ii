@@ -1,55 +1,89 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Tierwelt {
-
+	
+	final static String filename = "Tiere.txt";
+	final static String verz = "Projekt";
+	
 	public Tierwelt() {
+	
+		// ToDo: Initialisierung ArrayList tiere mit Vogel, Hund, Großkatze und Fisch 
+		// Erstelle einen Besitzer mit zwei Haustieren und lasse dir die alle Infoa des Besitzers ausgeben.
+		
+		
+		
+		
+		run();
+	}
+	
+	public void run() {
+		Utils.printInfo(tiere);
+		
+		insert();
+		Utils.printInfo(tiere);
+		
+		sort();
+		Utils.printInfo(tiere);
+		
+		printTier("Großkatze");
+		
+		remove("klasse","Hund");
+		Utils.printInfo(tiere);
+		
+		remove("art","Jagdhund");
+		Utils.printInfo(tiere);
 
-		Tier hund = new Hund("Hund", 3, false, "bellt", "Freddy");
-		Tier vogel = new Vogel("Vogel", 5, false, "piept", "Lili");
-		Tier fisch = new Fisch("Fisch", 10, false, "blubbert");
-		Tier tiger = new GroÃŸkatze("Tiger", 4, true, "brï¿½llt");
-
-		// Hund hund = new Hund("hund", -3, false, "bellt", "Freddy");
-		// Vogel vogel = new Vogel("vogel", 5, false, "piep", "Lili");
-		// Fisch fisch = new Fisch("fisch", 10, false, "blubbert");
-		// Tiger tiger = new Tiger("tiger", 4, true, "brï¿½llt");
-
+		
+		writeTiereToFile();
 		System.out.println();
+		
+		ArrayList<Tier> tierList = new ArrayList<>();
+		tierList = readTiereFromFile();
+		Utils.printInfo(tierList);
+	
+	}
+		
+	// schreiben Tiere in Datei
+	public void writeTiereToFile() {
+		Utils.schreibeDatenObjekt(tiere, verz, filename);
+		System.out.println();
+	}
 
-		// System.out.println(hund.toString());
-		// System.out.println(vogel.toString());
-		// System.out.println(fisch.toString());
-		// System.out.println(tiger.toString());
-
-		// 1. Mï¿½glichkeit Array: Deklaration
-		// Tier[] aTier = new Tier[4];
-		//
-		// // Initialisierung
-		// aTier[0] = hund;
-		// aTier[1] = vogel;
-		// aTier[2] = fisch;
-		// aTier[3] = tiger;
-
-		// 2. Mï¿½glichkeit Array: Deklaration und Initialisierung
-		Tier[] aTier = { hund, vogel, fisch, tiger };
-
-		// // 1. Mï¿½glichkeit: Array durchlaufen
-		// for(int i = 0; i < aTier.length; i++)
-		// System.out.println(aTier[i].toString());
-
-		// 2. Mï¿½glichkeit: Array durchlaufen
-		for (Tier tier : aTier) {
-			System.out.println(tier.toString());
-		}
-
-		// Beispiel statische Methode
-		Utils.printInfo(hund);
-		Utils.printInfo(vogel);
-		Utils.printInfo(fisch);
-		Utils.printInfo(tiger);
+	// lesen Tiere aus Datei
+	public ArrayList<Tier> readTiereFromFile() {
+		ArrayList<Tier> tiere = Utils.leseDatenObjekt(verz, filename);
+		return tiere;
+	}
+	
+	// Tier hinzufügen
+	public void insert() {
+		Utils.insert(tiere);
+	}
+	
+	// Tier nach Art oder Klasse löschen
+	public void remove(String kriterium) {
+		System.out.println("Nach welchem Kriterium soll ein Tier bzw. Tiere entfernt werden (Art/Klasse)");
+		Scanner scan = new Scanner(System.in);
+		if(scan.equals("Art"))
+			//tier nach art löschen
+			Utils.removeArt(tiere,kriterium);
+		else
+			//tier nach klasse löschen
+			Utils.removeKlasse(tiere, kriterium);
+	}
+	
+	// Tier nach Klasse sortieren
+	public void sort() {
+		Utils.sort(tiere);
+	}
+	
+	// gibt Informtionen von einem bestimmten Tier aus 
+	public void printTier(String tier) {
+		Utils.printTier(tier, tiere);
 	}
 
 	public static void main(String[] args) {
 		new Tierwelt();
 	}
-
 }

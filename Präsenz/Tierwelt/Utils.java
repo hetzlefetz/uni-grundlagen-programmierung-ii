@@ -79,7 +79,7 @@ public class Utils {
 	}
 
 	public static void insert(ArrayList<ITier> tiere) {
-		int i = tiere.size();
+		int i = 0;
 		BufferedReader br = null;
 		try {
 
@@ -104,6 +104,7 @@ public class Utils {
 					tiere.get(i - 1).setArt(art);
 					tiere.get(i - 1).setIsGefahr(Boolean.parseBoolean(gef));
 					tiere.get(i - 1).setLaut(laut);
+					break;
 				}
 
 				case "Vogel": {
@@ -123,6 +124,7 @@ public class Utils {
 					tiere.get(i - 1).setArt(art);
 					tiere.get(i - 1).setIsGefahr(Boolean.parseBoolean(gef));
 					tiere.get(i - 1).setLaut(laut);
+					break;
 				}
 				default: {
 					System.out.println("Art:");
@@ -191,7 +193,7 @@ public class Utils {
 
 	// ArrayList tiere nach Tierklasse sortieren
 	public static void sort(ArrayList<ITier> tiere) {
-		Collections.sort(tiere);
+		// Collections.sort(tiere);
 
 		// entsprechnder Lamda-Ausdruck
 		// Collections.sort(tiere,(o1, o2) -> o1.getKlasse().compareTo(o2.getKlasse()));

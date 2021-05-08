@@ -84,8 +84,4 @@ public class Hund implements ITier {
 
 	}
 
-	public void setName(string s) {
-		this.name = s;
-	}
-
 }

@@ -1,8 +1,6 @@
 
 import java.util.Arrays;
 
-
-
 public class FirmaTester {
 
     /**
@@ -25,7 +23,7 @@ public class FirmaTester {
         System.out.println("Sort By Plz");
         Arrays.sort(kmu.getAllePersonen(), new PlzSorter(true));
         kmu.alleAdressenAusgeben();
-       
+
         Angestellte ang2 = new Angestellte("Mueller", "Mark", "Amrummer Strasse", "11", "Berlin", "13353", false,
                 10000f);
         kmu.addAngestellte(ang2);
@@ -62,7 +60,9 @@ public class FirmaTester {
         System.out.println("Sort By Plz");
         Arrays.sort(kmu.getAllePersonen(), new PlzSorter(true));
         kmu.alleAdressenAusgeben();
-       
+        Arrays.sort(kmu.getAllePersonen(), (o1, o2) -> {
+            return o1.plz.compareTo(o2.plz);
+        });
         Kunde k3 = new Kunde("Deneuve", "Catherine", "Amrummer Strasse", "14", "Paris", "13353", true);
         // should not be possible
         kmu.addKunde(k3);
@@ -76,7 +76,6 @@ public class FirmaTester {
         System.out.println("Sort By Plz");
         Arrays.sort(kmu.getAllePersonen(), new PlzSorter(true));
         kmu.alleAdressenAusgeben();
-      
 
     }
 

@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch MAllShapes",
+      "request": "launch",
+      "mainClass": "fxge2.model.MAllShapes",
+      "projectName": "FXG-E2"
+    },
+    {
+      "type": "java",
+      "name": "Launch ShowShapesA",
+      "request": "launch",
+      "mainClass": "fxge2.view.ShowShapesA",
+      "vmArgs": "--module-path C:\\javafx\\javafx-sdk-11.0.2\\lib --add-modules=javafx.controls,javafx.fxml,javafx.graphics",
+      "projectName": "FXG-E2"
+    }
+  ]
+}

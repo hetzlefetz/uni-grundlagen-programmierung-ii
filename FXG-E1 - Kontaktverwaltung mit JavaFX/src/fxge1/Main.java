@@ -20,10 +20,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		List<Contact> contacts = new ArrayList<Contact>();
-		contacts.add(Utils.GetDummyContact("0"));
-		contacts.add(Utils.GetDummyContact("1"));
-		contacts.add(Utils.GetDummyContact("2"));
-		contacts.add(Utils.GetDummyContact("3"));
+		contacts.add(Utils.GetDummyContact(0));
+		contacts.add(Utils.GetDummyContact(1));
+		contacts.add(Utils.GetDummyContact(2));
+		contacts.add(Utils.GetDummyContact(3));
 		var repo = new ContactRepository(contacts);
 		var cl = new ContactList(repo);
 		var cp = new ContactPane(repo);

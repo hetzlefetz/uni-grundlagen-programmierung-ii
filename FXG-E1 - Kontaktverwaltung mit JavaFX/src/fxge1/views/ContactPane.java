@@ -1,11 +1,14 @@
 package fxge1.views;
 
+import java.util.ArrayList;
 import fxge1.ContactRepository;
 import fxge1.Utils;
 import fxge1.models.Contact;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -13,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
 import javafx.collections.ListChangeListener;
+import javafx.event.ActionEvent;
 
 public class ContactPane extends javafx.scene.layout.GridPane {
 
@@ -79,9 +83,6 @@ public class ContactPane extends javafx.scene.layout.GridPane {
 		this.add(new Label("E-Mail:"), 0, 4);
 		this.setHgap(25);
 
-		var mailInput = new TextField(c.getEMail());
-		mailInput.setStyle(normalStyle);
-
 		var lnameInput = new TextField(c.getlName());
 		lnameInput.setStyle(normalStyle);
 		this.add(lnameInput, 0, 1);
@@ -90,20 +91,50 @@ public class ContactPane extends javafx.scene.layout.GridPane {
 		fNameInput.setStyle(normalStyle);
 		this.add(fNameInput, 0, 3);
 
-		this.add(mailInput, 0, 5);
-		mailInput.textProperty().addListener(event -> {
-			System.out.println("Changed");
-			if (!mailInput.getText().isEmpty() && !mailInput.getText().matches(emailRegex)) {
-				mailInput.setStyle(errorStyle);
-				System.out.println("Match");
+		for (int i = 0; i < c.getEMail().size(); i++) {
+			final int foo = i;
+			var mailInput = new TextField(c.getEMail().get(i));
+			mailInput.setStyle(normalStyle);
+			this.add(mailInput, 0, 5 + i);
+			mailInput.textProperty().addListener(event -> {
+				System.out.println("Changed");
+				if (!mailInput.getText().isEmpty() && !mailInput.getText().matches(emailRegex)) {
+					mailInput.setStyle(errorStyle);
+					System.out.println("Match");
 
-			} else {
-				System.out.println("Doesnt match");
-				mailInput.setStyle(normalStyle);
-			}
+				} else {
+					System.out.println("Doesnt match");
+					mailInput.setStyle(normalStyle);
+					c.getEMail().set(foo, mailInput.getText());
+				}
+			});
+			var addBtn = new Button("+");
+			var remBtn = new Button("-");
+			addBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					c.getEMail().add("");
+				}
+			});
+			remBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					c.getEMail().remove(mailInput.getText());
+				}
+			});
+			this.add(addBtn, 1, 5 + i);
+			this.add(remBtn, 2, 5 + i);
 		}
-
-		);
+		if (c.getEMail().size() == 0) {
+			var addBtn = new Button("+");
+			addBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					c.getEMail().add("");
+				}
+			});
+			this.add(addBtn, 1, 5 + 0);
+		}
 
 		var image = new ImageView(new Image(Utils.InputStreamFromBase64(c.getProfileBase64()), 100, 100, true, true));
 		this.add(image, 1, 0, 1, 4);

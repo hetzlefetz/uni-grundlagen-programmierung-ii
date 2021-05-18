@@ -18,14 +18,19 @@ public class ContactListCell extends ListCell<Contact> {
 
 	@Override
 	protected void updateItem(Contact item, boolean empty) {
-		// TODO Auto-generated method stub
+
 		super.updateItem(item, empty);
 		setText(null);
 		if (empty) {
 			setGraphic(null);
 		} else {
 			name.setText(item.getlName() + "," + item.getfName());
-			mail.setText(item.getEMail());
+			if (item.getEMail().size() == 0) {
+
+				mail.setText("-- NO Mails Address--");
+			} else {
+				mail.setText("Primary Email: " + item.getEMail().get(0));
+			}
 			setGraphic(vbox);
 		}
 

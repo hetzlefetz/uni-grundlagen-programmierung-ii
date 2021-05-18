@@ -15,7 +15,7 @@ public class ContactRepository {
 		_oContacts = FXCollections.observableArrayList(new Callback<Contact, Observable[]>() {
 			@Override
 			public Observable[] call(Contact param) {
-				return new Observable[] { param.getfNameProperty(), param.getlNameProperty(), param.getlEmailProperty(),
+				return new Observable[] { param.getfNameProperty(), param.getlNameProperty(), param.getEmailsProperty(),
 						param.getSelectedProperty() };
 			}
 		});

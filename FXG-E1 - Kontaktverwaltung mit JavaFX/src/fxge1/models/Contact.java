@@ -1,22 +1,28 @@
 package fxge1.models;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Contact {
 
 	private StringProperty fName;
 	private StringProperty profileBase64;
 	private StringProperty lName;
-	private StringProperty eMail;
+	private SimpleListProperty<String> eMails;
 	private BooleanProperty selected;
 
-	public Contact(String fName, String lName, String eMail, String profileBase64) {
+	public Contact(String fName, String lName, ArrayList<String> eMails, String profileBase64) {
 		this.fName = new SimpleStringProperty(fName);
 		this.lName = new SimpleStringProperty(lName);
-		this.eMail = new SimpleStringProperty(eMail);
+		this.eMails = new SimpleListProperty<String>(FXCollections.observableArrayList(eMails));
 		this.profileBase64 = new SimpleStringProperty(profileBase64);
 		this.selected = new SimpleBooleanProperty(false);
 
@@ -70,16 +76,16 @@ public class Contact {
 		this.lName.set(lName);
 	}
 
-	public String getEMail() {
-		return this.eMail.get();
+	public ObservableList<String> getEMail() {
+		return this.eMails.get();
 	}
 
-	public StringProperty getlEmailProperty() {
-		return this.eMail;
+	public ListProperty<String> getEmailsProperty() {
+		return this.eMails;
 	}
 
-	public void seteMail(String eMail) {
-		this.eMail.set(eMail);
+	public void addEmail(String mail) {
+		this.eMails.get().add(mail);
 	}
 
 	@Override
@@ -91,7 +97,7 @@ public class Contact {
 		sb.append(System.lineSeparator());
 		sb.append("\"lName\":\"" + getlName() + "\",");
 		sb.append(System.lineSeparator());
-		sb.append("\"eMail\":\"" + getEMail() + "\",");
+		sb.append("\"eMails\":\"[" + String.join(",", getEMail()) + "\"],");
 		sb.append(System.lineSeparator());
 		sb.append("\"selected\":\"" + getSelected() + "\"");
 		sb.append(System.lineSeparator());

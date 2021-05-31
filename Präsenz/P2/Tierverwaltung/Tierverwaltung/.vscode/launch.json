@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
+      "mainClass": "application.Main",
+      "projectName": "Tierverwaltung_6e0bfdb3",
+      "vmArgs": "--module-path C:\\javafx\\javafx-sdk-11.0.2\\lib --add-modules=javafx.controls,javafx.fxml,javafx.graphics"
+    }
+  ]
+}

@@ -102,11 +102,14 @@ public class DialogPerson {
         Label label7 = new Label("Hat die Person ein Haustier?");
         label3.setMinWidth(70);
 
-        // ToDo: RadioButton f�r Haustier ja/nein. Wenn ja, dann erschein der Tierdialog
-
+        // ToDo: RadioButton für Haustier ja/nein. Wenn ja, dann erschein der Tierdialog
+        ToggleGroup tier = new ToggleGroup();
         ArrayList<Node> enter7 = new ArrayList<>();
         var j = new RadioButton("Ja");
         var n = new RadioButton("Nein");
+        j.setToggleGroup(tier);
+        n.setToggleGroup(tier);
+
         enter7.add(label7);
         enter7.add(j);
         enter7.add(n);
@@ -119,7 +122,7 @@ public class DialogPerson {
         });
 
         Button submit = new Button("Submit");
-        submit.setOnAction(new InsertPersonController(vorname, nachname, group, alter, bild, email, null));
+        submit.setOnAction(new InsertPersonController(vorname, nachname, group, alter, bild, email, tier));
 
         Button close = new Button("Schlie�en");
         close.setOnAction(e -> secondStage.close());
@@ -131,7 +134,8 @@ public class DialogPerson {
 
         vbox.getChildren().addAll(enter1box, enter2box, enter3box, enter4box, enter5box, enter6box, enter7box,
                 buttonbox);
-
+        secondStage.initOwner(primaryStage);
+        secondStage.initModality(Modality.APPLICATION_MODAL);
         secondStage.setScene(new Scene(vbox, WIDTH, HEIGHT));
         secondStage.setResizable(false);
         return secondStage;

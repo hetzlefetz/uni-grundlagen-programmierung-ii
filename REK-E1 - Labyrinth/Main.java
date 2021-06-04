@@ -56,7 +56,7 @@ public class Main {
             currentX = STARTX;
             currentY = STARTY;
         }
-        if (currentX > LAB_SIZE || currentY > LAB_SIZE)
+        if (currentX >= LAB_SIZE || currentY >= LAB_SIZE)
             return false;// out of bounds
 
         if (labyrinth[currentX][currentY] == 'X' || labyrinth[currentX][currentY] == '*')

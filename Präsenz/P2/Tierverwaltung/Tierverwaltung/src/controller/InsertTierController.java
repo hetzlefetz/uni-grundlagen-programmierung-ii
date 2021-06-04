@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import model.Fisch;
 import model.Großkatze;
 import model.Hund;
@@ -33,16 +34,24 @@ public class InsertTierController implements EventHandler<ActionEvent> {
 			case "ID1": {
 				Tiere.addTier(
 						new Hund(this.art.getText(), Integer.parseInt(this.alter.getText()), this.name.getText()));
+				((Stage) g.getScene().getWindow()).close();
+				break;
 			}
 			case "ID2": {
 				Tiere.addTier(
 						new Vogel(this.art.getText(), Integer.parseInt(this.alter.getText()), this.name.getText()));
+				((Stage) g.getScene().getWindow()).close();
+				break;
 			}
 			case "ID3": {
 				Tiere.addTier(new Großkatze(this.art.getText(), Integer.parseInt(this.alter.getText())));
+				((Stage) g.getScene().getWindow()).close();
+				break;
 			}
 			case "ID4": {
 				Tiere.addTier(new Fisch(this.art.getText(), Integer.parseInt(this.alter.getText())));
+				((Stage) g.getScene().getWindow()).close();
+				break;
 			}
 		}
 	}

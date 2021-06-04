@@ -104,6 +104,9 @@ public class Utils<E> {
 		} catch (IllegalArgumentException e) {
 			System.out.println("Alter nicht g�ltig! Bitte neues Alter eingeben: ");
 			return alter;
+		} finally {
+			scan.close();
+
 		}
 		return alter;
 	}
@@ -157,14 +160,14 @@ public class Utils<E> {
 					System.out.println("Es wurde kein neues Tier erstellt");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
 			try {
 				// buffer schlie�en
 				br.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		}
@@ -277,17 +280,17 @@ public class Utils<E> {
 			oos.flush();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
-			// atream schlie�en
+
 			try {
 				oos.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		}
@@ -315,17 +318,17 @@ public class Utils<E> {
 			objektList = (ArrayList<E>) ois.readObject();
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} finally {
 			// stream schlie�en
 			try {
 				ois.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		}
@@ -362,7 +365,7 @@ public class Utils<E> {
 		try {
 			file.createNewFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 

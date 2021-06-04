@@ -106,7 +106,8 @@ public class DialogTier {
 			vbox.getChildren().addAll(enter4box, enter1box, enter3box, buttonbox);
 
 		}
-
+		secondStage.initOwner(primaryStage);
+		secondStage.initModality(Modality.APPLICATION_MODAL);
 		secondStage.setScene(new Scene(vbox, WIDTH, HEIGHT));
 		secondStage.setResizable(false);
 		return secondStage;

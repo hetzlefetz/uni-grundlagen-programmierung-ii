@@ -1,0 +1,20 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch ShowShapesA",
+      "request": "launch",
+      "mainClass": "fxee1.view.ShowShapesA",
+      "projectName": "FXE-E1",
+      "vmArgs": "--module-path C:\\javafx\\javafx-sdk-11.0.2\\lib --add-modules=javafx.controls,javafx.fxml,javafx.graphics"
+    },
+    {
+      "type": "java",
+      "name": "Launch ShowShapesA",
+      "request": "launch",
+      "mainClass": "fxee1.view.ShowShapesA",
+      "vmArgs": "--module-path C:\\javafx\\javafx-sdk-11.0.2\\lib --add-modules=javafx.controls,javafx.fxml,javafx.graphics",
+      "projectName": "FXE-E2"
+    }
+  ]
+}
